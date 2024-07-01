@@ -1,0 +1,61 @@
+#include <stdio.h>
+
+int main() {
+    int choice, n, sum = 0;
+    int i, number;
+
+    while (1) {
+        // Display menu
+        printf("Menu:\n");
+        printf("1. Sum of Even Numbers\n");
+        printf("2. Sum of Odd Numbers\n");
+        printf("3. Exit\n");
+        printf("Enter your choice: ");
+        scanf("%d", &choice);
+
+        if (choice == 3) {
+            printf("Exiting program.\n");
+            break;
+        }
+
+        printf("How many numbers do you want to sum? ");
+        scanf("%d", &n);
+
+        sum = 0;
+
+        switch (choice) {
+            case 1:
+                printf("Enter %d even numbers:\n", n);
+                for (i = 0; i < n; i++) {
+                    scanf("%d", &number);
+                    if (number % 2 == 0) {
+                        sum += number;
+                    } else {
+                        printf("%d is not an even number. Please enter an even number.\n", number);
+                        i--; // To ensure the correct count of even numbers
+                    }
+                }
+                printf("Sum of %d even numbers: %d\n", n, sum);
+                break;
+
+            case 2:
+                printf("Enter %d odd numbers:\n", n);
+                for (i = 0; i < n; i++) {
+                    scanf("%d", &number);
+                    if (number % 2 != 0) {
+                        sum += number;
+                    } else {
+                        printf("%d is not an odd number. Please enter an odd number.\n", number);
+                        i--; // To ensure the correct count of odd numbers
+                    }
+                }
+                printf("Sum of %d odd numbers: %d\n", n, sum);
+                break;
+
+            default:
+                printf("Invalid choice. Please select again.\n");
+        }
+    }
+
+    return 0;
+}
